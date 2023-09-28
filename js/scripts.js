@@ -1,3 +1,3 @@
 alert('Hello world');
-let favoriteFood ='sushi' ;
+let favoriteFood ='Sushi' ;
 document.write(favoriteFood) ;
