@@ -25,6 +25,6 @@ for (let i=0; i <pokemonList.length; i++){
         document.write( pokemonList[i].name + ' (height: ' + pokemonList[i].height + ' cm)' - 'Wow that\'s huge!');   
     }
     else if(pokemonList[i].height <29) {
-        document.write( pokemonList[i].name + ' (height: ' + pokemonList[i].height + ' cm)');
+        document.write( pokemonList[i].name + ' (height: ' + pokemonList[i].height + ' cm)' - 'Wow that\'s tiny!');
     }
 }
