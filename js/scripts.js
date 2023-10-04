@@ -11,7 +11,7 @@ let pokemonList = [
     {name: 'Caterpie', height: 30, types: ['Bug'], ability: ['Shield Dust', 'Run Away'] },
     {name: 'Metapod', height: 73, types: ['Bug'], ability: ['Shed Skin'] },
     {name: 'Butterfree', height: 113, types: ['Bug', 'Flying'], ability: ['Compound Eyes', 'Tinted Lens'] },
-    {name: 'Weedle', height: 30, types: ['Bug', 'Poison'], ability: ['Shield Dust', 'Run Away'] },
+    {name: 'Weedle', height: 29, types: ['Bug', 'Poison'], ability: ['Shield Dust', 'Run Away'] },
     {name: 'Kakuna', height: 60, types: ['Bug', 'Poison'], ability: ['Shed Skin'] },
     {name: 'Beedrill', height: 101, types: ['Bug', 'Poison'], ability: ['Swarm', 'Sniper'] },
 
@@ -19,3 +19,12 @@ let pokemonList = [
 
 
 ];
+
+for (let i=0; i <pokemonList.length; i++){
+    if(pokemonList[i].height >200) {
+        document.write( pokemonList[i].name + ' (height: ' + pokemonList[i].height + ' cm)' - 'Wow that\'s huge!');   
+    }
+    else if(pokemonList[i].height <29) {
+        document.write( pokemonList[i].name + ' (height: ' + pokemonList[i].height + ' cm)');
+    }
+}
