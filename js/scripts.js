@@ -1,24 +1,7 @@
 let pokemonRepository = (function (){
     let pokemonList =[];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
-    /*let pokemonList = [
-        {name: 'Bulbasaur', height: 74, types: ['Grass','Poison'], ability: ['Overgrow', 'Chlorophyll'] },
-        {name: 'Ivysaur', height: 101, types: ['Grass','Poison'], ability: ['Overgrow', 'Chlorophyll'] },
-        {name: 'Venusaur', height: 204, types: ['Grass','Poison'], ability: ['Overgrow', 'Chlorophyll'] },
-        {name: 'Charmander', height: 60, types: ['Fire'], ability: ['Blaze', 'Solar Power'] },
-        {name: 'Charmeleon', height: 113, types: ['Fire'], ability: ['Blaze', 'Solar Power'] },
-        {name: 'Charizard', height: 174, types: ['Fire', 'Flying'], ability: ['Blaze', 'Solar Power'] },
-        {name: 'Squirtle', height: 55, types: ['Water'], ability: ['Torrent', 'Rain Dish'] },
-        {name: 'Wartortle', height: 101, types: ['Water'], ability: ['Torrent', 'Rain Dish'] },
-        {name: 'Blastoise', height: 162, types: ['Water'], ability: ['Torrent', 'Rain Dish'] },
-        {name: 'Caterpie', height: 30, types: ['Bug'], ability: ['Shield Dust', 'Run Away'] },
-        {name: 'Metapod', height: 73, types: ['Bug'], ability: ['Shed Skin'] },
-        {name: 'Butterfree', height: 113, types: ['Bug', 'Flying'], ability: ['Compound Eyes', 'Tinted Lens'] },
-        {name: 'Weedle', height: 29, types: ['Bug', 'Poison'], ability: ['Shield Dust', 'Run Away'] },
-        {name: 'Kakuna', height: 60, types: ['Bug', 'Poison'], ability: ['Shed Skin'] },
-        {name: 'Beedrill', height: 101, types: ['Bug', 'Poison'], ability: ['Swarm', 'Sniper'] },
-
-];*/
+   
     function add(pokemon) {
         pokemonList.push(pokemon);
     }
@@ -54,6 +37,14 @@ let pokemonRepository = (function (){
             console.error(e);
             })
       }
+
+
+      function showDetails(pokemon) {
+        loadDetails(pokemon).then(function () {
+          console.log(pokemon);
+          showModal(pokemon);
+        });
+      }
       
       function loadDetails(item) {
         let url = item.detailsUrl;
@@ -69,21 +60,84 @@ let pokemonRepository = (function (){
         });
       }
 
-      function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
-          console.log(pokemon);
-        });
-      }
+      function showModal(pokemon) {
+        let modalContainer = document.querySelector('#modal-container');
+      
+      
+        modalContainer.innerHTML = '';
+      
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+      
+      
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+      
+        let titleElement = document.createElement('h1');
+        titleElement.innerText = pokemon.name;
+      
+        let heightElement = document.createElement('p');
+        heightElement.innerText = "Height: " + pokemon.height;
+      
+        function typeCount(pokemon) {
+            if(pokemon.types.length === 2) {
+                return pokemon.types[0].type.name + "," + pokemon.types[1].type.name;
+            } else {
+                return pokemon.types[0].type.name
+            }
+        }
 
-    /*function showDetails(pokemon) {                        
-            console.log(pokemon);
-        };*/
+        let typeElement = document.createElement("p");
+        typeElement.innerText = "Type: " + typeCount(pokemon);
+
+        let imgElement = document.createElement("img");
+        imgElement.src = pokemon.imageUrl;
+
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(heightElement);
+        modal.appendChild(typeElement);
+        modal.appendChild(imgElement);
+        modalContainer.appendChild(modal);
+      
+        modalContainer.classList.add('is-visible');
+      }
+      
+      function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+      
+        modalContainer.classList.remove('is-visible');
+      }
+      
+      window.addEventListener('keydown', (e) => {
+        let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+          hideModal();
+        }
+      });
+      
+      let modalContainer = document.querySelector('#modal-container');
+      modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideModal();
+        }
+      });
+      
+      
+     
 
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         loadList: loadList,
+        showModal: showModal,
+        hideModal: hideModal,
+        loadDetails: loadDetails,
+        showDetails: showDetails,
     };
 
 })();
@@ -111,32 +165,4 @@ pokemonRepository.getAll().forEach(function (pokemon) {
    
    
    
-    /* if (pokemon.height > 200) {
-      document.write(`<div>
-        ${pokemon.name} (height: ${pokemon.height} cm) - Wow that's huge!</div>`
-      );
-    } else if (pokemon.height) {
-      document.write(
-        `<div> ${pokemon.name} (height: ${pokemon.height} cm) </div>`);
-    }
-  })*/
-
-/*for (let i = 0; i < pokemonList.length; i++) {
-    if (pokemonList[i].height > 200) {
-      document.write(
-        pokemonList[i].name +
-          " (height: " +
-          pokemonList[i].height +
-          " cm)" +
-          "Wow that's huge!"
-      );
-    } else if (pokemonList[i].height) {
-      document.write(
-        pokemonList[i].name +
-          " (height: " +
-          pokemonList[i].height +
-          " cm)"   
-      );
-    } 
-     
-  }*/
+    
