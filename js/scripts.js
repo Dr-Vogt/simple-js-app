@@ -18,7 +18,7 @@ let pokemonRepository = (function (){
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
 
-        button.addEventListener('click', function () {      /* added a Event listener to the button */
+        button.addEventListener('click', function () {      
             showDetails(pokemon);  
     });                          
     };
