@@ -1,13 +1,25 @@
 :root {
-    --background-color: darkgrey; 
+    --background-color: #696969; 
 
+}
+
+.navbar {
+    background-color: #bf95f9;
+    text-align: right;
+}
+
+.navbar-brand{
+    color: black;
 }
 body{
     background-color: var(--background-color)
 }
 
+ul{
+    text-decoration: none;
+}
 .button-class {
-    background-color: #a46bd2;
+    background-color: #9125e975;
     border: none;
     color: white;
     padding: 15px 28px;
@@ -18,7 +30,10 @@ body{
     margin: 4px 2px;
     cursor: pointer
     
+    
 }
+
+
 
 /*#modal-container {
     display: none;

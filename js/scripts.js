@@ -12,9 +12,12 @@ let pokemonRepository = (function (){
     function addListItem(pokemon) {
         let pokemonList = document.querySelector(".pokemon-list");
         let listItem = document.createElement("li");
+        pokemonList.classList.add('list-group-item'); 
+        pokemonList.classList.add('col-12'); 
+        pokemonList.classList.add('col-md-4'); 
         let button = document.createElement("button");
-        button.setAttribute('data-toggle', 'modal');
-        button.setAttribute('data-target', '#modal');
+        button.setAttribute('data-bs-toggle', 'modal');
+        button.setAttribute('data-bs-target', '#modal');
         button.innerText = pokemon.name;
         button.classList.add("button-class");
         listItem.appendChild(button);
@@ -86,23 +89,21 @@ let pokemonRepository = (function (){
         let heightElement = document.createElement('p');
         heightElement.innerText = "Height: " + pokemon.height;
       
-        function typeCount(pokemon) {
-            if(pokemon.types.length === 2) {
-                return pokemon.types[0].type.name + "," + pokemon.types[1].type.name;
-            } else {
-                return pokemon.types[0].type.name
-            }
-        }
+        console.log(pokemon.types)
+        console.log((pokemon.types||[]).map(aob=> aob.type.name).join(", "));
+        
 
         let typeElement = document.createElement("p");
-        typeElement.innerText = "Type: " + typeCount(pokemon);
+        typeElement.innerText = "Type: " + (pokemon.types||[]).map(aob=> aob.type.name).join(", ")
 
         let imgElement = document.createElement("img");
         imgElement.classList.add('modal-img');
         imgElement.src = pokemon.imageUrl;
 
         let abilitiesElement = document.createElement('p')
-        abilitiesElement.innerText = "Abilities: " + pokemon.abilities;
+        abilitiesElement.innerText = "Abilities: " + (pokemon.abilities||[]).map(ab => ab.ability.name).join(",");
+        console.log(pokemon.abilities)
+        
        /* modal.appendChild(closeButtonElement); */
         modalTitle.appendChild(titleElement);
         modalBody.appendChild(heightElement);
