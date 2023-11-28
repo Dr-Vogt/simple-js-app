@@ -13,7 +13,6 @@ let pokemonRepository = (function (){
         let pokemonList = document.querySelector(".row");
         let listItem = document.createElement("li");
         pokemonList.classList.add('list-group-item'); 
-       //pokemonList.classList.add('button-li', 'col-6', 'col-md-3', 'col-sm-4', 'mb-3');
         pokemonList.classList.add('col-12'); 
         pokemonList.classList.add('col-md-6');
         pokemonList.classList.add("col-sm-4") 

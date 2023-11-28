@@ -13,7 +13,7 @@
     color: black;
 }
 body{
-   /* background-color: var(--background-color); */
+  
     background-image: url(../img/map-kanto.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -43,18 +43,7 @@ body{
     left: 50%;
     right: 25%;
 }
-   /* border: none;
-    color: white;
-    padding: 15px 28px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer 
-    
-    
-} */
+   
 
     li {
         list-style: none;
