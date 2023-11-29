@@ -67,18 +67,31 @@ body{
     }
     
     
-    @media all and (max-width: 265px) {
-        h1 {
-          font-size: 25px;
+  
+      
+      @media all and (max-width: 575px) {
+        .modal-dialog {
+            width: 250px;
+        }
+        .img-pokemon{
+            height: 50px;
+        }
+        main {
+            padding-left: 10px;
+            padding-right: 10px;
         }
         .button-class {
-            padding: 12px 20px;
-            min-width: 80%;
+            font-size: 13px;
         }
-        .modal img {
-            width: 100px;
-            margin-right: 10px;
+    }
+    
+    @media all and (min-width: 500px) and (max-width: 862px) {
+        main {
+            padding-left: 40px;
+            padding-right: 40px;
         }
-      }
-      
-     
+        .modal-dialog {
+            width: 300px;
+        }
+    
+    }
