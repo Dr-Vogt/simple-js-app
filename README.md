@@ -6,3 +6,5 @@ In the project JS, HTML, CSS, Bootstrap, jQuery, and ESlint were used.
 API for the application
 API: https://pokeapi.co/
 
+Link to project
+https://dr-vogt.github.io/simple-js-app/
